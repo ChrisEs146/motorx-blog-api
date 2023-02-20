@@ -13,6 +13,12 @@ const postSchema = z.object({
       invalid_type_error: "Description must be text(string)",
     })
     .trim(),
+  image: z
+    .string({
+      required_error: "Image is required",
+      invalid_type_error: "Image path must be string",
+    })
+    .trim(),
 });
 
 export type PostInput = z.infer<typeof postSchema>;
