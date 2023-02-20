@@ -3,3 +3,6 @@
 
 #configs
 .vscode
+
+#env variables
+.env
