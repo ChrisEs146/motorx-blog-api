@@ -1,14 +1,22 @@
 import { z } from "zod";
 
 const userSchema = z.object({
-  username: z
+  firstName: z
     .string({
-      required_error: "Username is required",
-      invalid_type_error: "Username must be a string",
+      required_error: "First name is required",
+      invalid_type_error: "First name must be a string",
     })
     .trim()
-    .min(4, { message: "Username must not be less than 4 chars long" })
-    .max(45, { message: "Username must not exceed 45 chars long" }),
+    .min(4, { message: "First name must not be less than 4 chars long" })
+    .max(50, { message: "First name must not exceed 50 chars long" }),
+  lastName: z
+    .string({
+      required_error: "Last name is required",
+      invalid_type_error: "Last name must be a string",
+    })
+    .trim()
+    .min(4, { message: "Last name must not be less than 4 chars long" })
+    .max(50, { message: "Last name must not exceed 50 chars long" }),
   email: z
     .string({ required_error: "Email is required" })
     .trim()
