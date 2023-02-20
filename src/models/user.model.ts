@@ -28,7 +28,12 @@ const userSchema = z.object({
     })
     .trim()
     .min(8, { message: "Password must be at least 8 chars long" }),
-  img: z.string({ required_error: "Image is required" }).trim(),
+  img: z
+    .string({
+      required_error: "Image is required",
+      invalid_type_error: "Image path must be a string",
+    })
+    .trim(),
   recoveryToken: z.string().optional(),
 });
 
