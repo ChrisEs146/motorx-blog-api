@@ -22,7 +22,10 @@ const userSchema = z.object({
     .trim()
     .email({ message: "Invalid email address" }),
   password: z
-    .string({ required_error: "Password is required" })
+    .string({
+      required_error: "Password is required",
+      invalid_type_error: "Password must be a string",
+    })
     .trim()
     .min(8, { message: "Password must be at least 8 chars long" }),
   img: z.string({ required_error: "Image is required" }).trim(),
