@@ -18,7 +18,7 @@ const userSchema = z.object({
     .min(4, { message: "Last name must not be less than 4 chars long" })
     .max(50, { message: "Last name must not exceed 50 chars long" }),
   email: z
-    .string({ required_error: "Email is required" })
+    .string({ required_error: "Email is required", invalid_type_error: "Email must be a string" })
     .trim()
     .email({ message: "Invalid email address" }),
   password: z
