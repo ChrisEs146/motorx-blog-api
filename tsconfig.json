@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
+    "target": "ESNext",
     "lib": ["ES2022"],
     "module": "ESNext",
     "rootDir": "./",
     "moduleResolution": "node",
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "sourceMap": true,
     "outDir": "./dist",
     "removeComments": true,
@@ -21,7 +21,7 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true
   },
-  "include": ["src", ".eslintrc.cjs"],
+  "include": ["src/**/*.ts", ".eslintrc.cjs", "test/**/*.ts", "jest.config.ts"],
   "ts-node": {
     "esm": true
   }
