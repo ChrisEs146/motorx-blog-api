@@ -1,7 +1,8 @@
-import express, { Request, Response, Application } from "express";
+import express, { Application } from "express";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import authRoutes from "./routes/auth.routes.js";
 
 const app: Application = express();
 
@@ -12,9 +13,7 @@ app.use(cors()); //TODO:Declare corsOptions
 
 // Limiter
 // Routes
-app.use("api/v1/users", function (_req: Request, res: Response) {
-  res.send("It works");
-});
+app.use("/api/user", authRoutes);
 // Global error handler
 
 export default app;
