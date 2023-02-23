@@ -44,3 +44,5 @@ export const createUserSchema = z
       .trim(),
   })
   .strict();
+
+export const updateUserSchema = createUserSchema.pick({ firstName: true, lastName: true });
