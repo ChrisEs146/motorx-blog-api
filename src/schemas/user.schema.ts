@@ -46,3 +46,27 @@ export const createUserSchema = z
   .strict();
 
 export const updateUserSchema = createUserSchema.pick({ firstName: true, lastName: true });
+
+export const updatePasswordSchema = z.object({
+  currentPassword: z
+    .string({
+      required_error: "Password is required",
+      invalid_type_error: "Password must be a string",
+    })
+    .trim()
+    .min(8, { message: "Password must be at least 8 chars long" }),
+  newPassword: z
+    .string({
+      required_error: "Password is required",
+      invalid_type_error: "Password must be a string",
+    })
+    .trim()
+    .min(8, { message: "Password must be at least 8 chars long" }),
+  confirmPassword: z
+    .string({
+      required_error: "Confirm password is required",
+      invalid_type_error: "Confirm password must be a string",
+    })
+    .trim()
+    .min(8, { message: "Confirm password must be at least 8 chars long" }),
+});
