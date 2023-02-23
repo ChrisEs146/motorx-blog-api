@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const userSchema = z.object({
+export const userSchema = z.object({
   firstName: z
     .string({
       required_error: "First name is required",
@@ -34,7 +34,6 @@ const userSchema = z.object({
       invalid_type_error: "Image path must be a string",
     })
     .trim(),
-  recoveryToken: z.string().optional(),
 });
 
-export type UserInput = z.infer<typeof userSchema>;
+export type UserRequest = z.infer<typeof userSchema>;
