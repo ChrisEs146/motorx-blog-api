@@ -4,6 +4,9 @@
 #configs
 .vscode
 
+#dir
+dist
+
 #env variables
 .env
 .env.test
