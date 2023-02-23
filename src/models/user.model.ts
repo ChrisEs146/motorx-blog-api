@@ -36,4 +36,4 @@ const userSchema = z.object({
     .trim(),
 });
 
-export type UserInput = z.infer<typeof userSchema>;
+export type UserRequest = z.infer<typeof userSchema>;
