@@ -70,3 +70,7 @@ export const updatePasswordSchema = z.object({
     .trim()
     .min(8, { message: "Confirm password must be at least 8 chars long" }),
 });
+
+export type CreateUserInput = z.infer<typeof createUserSchema>;
+export type UpdateUserInput = z.infer<typeof updateUserSchema>;
+export type UpdatePasswordInput = z.infer<typeof updatePasswordSchema>;
