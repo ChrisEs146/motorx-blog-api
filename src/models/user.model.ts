@@ -34,7 +34,6 @@ const userSchema = z.object({
       invalid_type_error: "Image path must be a string",
     })
     .trim(),
-  recoveryToken: z.string().optional(),
 });
 
 export type UserInput = z.infer<typeof userSchema>;
