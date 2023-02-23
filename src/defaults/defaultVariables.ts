@@ -1,5 +1,5 @@
 const processVar = {
-  PORT: process.env.PORT,
+  PORT: Number(process.env.PORT),
   NODE_ENV: process.env.NODE_ENV,
   ACCESS_TOKEN_KEY: process.env.ACCESS_JWT_SECRET,
   ACCESS_TOKEN_EXPIRY: process.env.ACCESS_JWT_EXPIRY,
