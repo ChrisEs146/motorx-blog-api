@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const userSchema = z.object({
+export const userSchema = z.object({
   firstName: z
     .string({
       required_error: "First name is required",
