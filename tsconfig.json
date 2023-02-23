@@ -21,7 +21,8 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", ".eslintrc.cjs", "test/**/*.ts", "jest.config.ts"],
+  "include": ["src/**/*.ts", "test/**/*.ts"],
+  "exclude": ["node_modules", ".eslintrc.cjs", "jest.config.js"],
   "ts-node": {
     "esm": true
   }
