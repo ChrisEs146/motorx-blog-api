@@ -1,9 +1,8 @@
 /**
  * Custom error interface
  */
-export interface CustomError extends Error {
+export interface ICustomError extends Error {
   statusCode?: number;
-  status?: number;
   message: string;
   error: string | null;
 }
