@@ -1,5 +1,8 @@
 import { z } from "zod";
 
+/**
+ * Create user schema
+ */
 export const createUserSchema = z
   .object({
     firstName: z
@@ -45,8 +48,9 @@ export const createUserSchema = z
   })
   .strict();
 
-export const updateUserSchema = createUserSchema.pick({ firstName: true, lastName: true });
-
+/**
+ * Update password schema
+ */
 export const updatePasswordSchema = z.object({
   currentPassword: z
     .string({
@@ -70,7 +74,11 @@ export const updatePasswordSchema = z.object({
     .trim()
     .min(8, { message: "Confirm password must be at least 8 chars long" }),
 });
-
-export type CreateUserInput = z.infer<typeof createUserSchema>;
-export type UpdateUserInput = z.infer<typeof updateUserSchema>;
-export type UpdatePasswordInput = z.infer<typeof updatePasswordSchema>;
+/**
+ * Update user schema
+ */
+export const updateUserSchema = createUserSchema.pick({ firstName: true, lastName: true });
+/**
+ * Log in user Schema
+ */
+export const logInUserSchema = createUserSchema.pick({ email: true, password: true });
