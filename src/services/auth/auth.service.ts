@@ -35,5 +35,24 @@ export async function registerUser(data: CreateUserInput): Promise<CreatedUser> 
     throw new CustomError(500, errorMsgs.UserError);
   }
 }
+
+// login user
+export async function logInUser(data: LogInUserInput): Promise<LoggedInUser> {
+  const existingUser = await prisma.user.findUnique({
+    where: {
+      email: data.email,
+    },
+  });
+
+  if (existingUser === null) {
+    throw new CustomError(403, errorMsgs.Conflict);
+  }
+
+  const isValidPwd = await comparePassword(data.password, existingUser.password);
+
+  if (!isValidPwd) {
+    throw new CustomError(401, errorMsgs.invalidCreds);
   }
 }
+// logout user
+// refresh user
