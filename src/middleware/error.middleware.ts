@@ -22,8 +22,9 @@ export function handleError(err: ICustomError, _req: Request, res: Response) {
  * @param _req Request
  * @param res Response
  */
-export function handleNotFoundError(err: ICustomError, _req: Request, res: Response): void {
-  res.status(400).json({
+export function handleNotFoundError(err: ICustomError, _req: Request, res: Response) {
+  res.status(400);
+  return res.json({
     message: err.message,
     stack: process.env.NODE_ENV === "production" ? null : err.stack,
   });
