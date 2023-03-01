@@ -1,0 +1,3 @@
+#Config files
+jest.config.ts
+.eslintrc.cjs
