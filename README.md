@@ -1,3 +1,3 @@
-### MotorX blog API
+### MotorX blog API -- In Progress
 
-Api for the motorX application.
+Api for a cars/vehicles blog application.
