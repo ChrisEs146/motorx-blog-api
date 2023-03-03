@@ -3,7 +3,8 @@ export const errorMsgs = {
   Conflict: "Resource already exists.",
   BadRequest: "Resource is not valid",
   NotMatch: "Passwords don't match",
-  UserError: "Something went wrong creating the user",
+  UserCreationError: "Something went wrong creating the user",
+  UserLoggingError: "Something went wrong logging in the user",
   invalidCreds: "Email or password are incorrect",
 };
 
