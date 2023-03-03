@@ -20,4 +20,4 @@ export type CreatedUser = Omit<IUser, "img" | "recoveryToken">;
 /**
  * Logged in user type
  */
-export type LoggedInUser = Pick<IUser, "id" | "firstName" | "lastName">;
+export type LoggedInUser = { accessToken: string; refreshToken: string };
