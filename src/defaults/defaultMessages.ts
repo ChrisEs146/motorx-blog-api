@@ -1,7 +1,7 @@
 export const errorMsgs = {
-  NotFound: "Resource was not found.",
-  Conflict: "Resource already exists.",
-  BadRequest: "Resource is not valid",
+  NotFound: (resource: string): string => `${resource} was not found.`,
+  Conflict: (resource: string): string => `${resource} already exists.`,
+  BadRequest: (resource: string): string => `${resource} is not valid`,
   NotMatch: "Passwords don't match",
   UserCreationError: "Something went wrong creating the user",
   UserLoggingError: "Something went wrong logging in the user",
