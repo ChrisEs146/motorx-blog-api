@@ -8,6 +8,7 @@ import { ICustomError } from "./middleware.interfaces.js";
  * @param res Response
  */
 /* eslint-disable */
+export function handleError(err: ICustomError, _req: Request, res: Response, _next: NextFunction) {
   const status = err.statusCode ?? 500;
   res.status(status);
   return res.json({
@@ -23,5 +24,6 @@ import { ICustomError } from "./middleware.interfaces.js";
  * @param res Response
  */
 /* eslint-disable */
+export function handleNotFoundResource(_req: Request, res: Response, _next: NextFunction) {
   });
 }
