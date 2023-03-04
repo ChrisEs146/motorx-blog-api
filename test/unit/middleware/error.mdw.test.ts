@@ -66,12 +66,14 @@ describe("Handle not found resource", (): void => {
     handleNotFoundResource(mockReq as Request, mockRes as Response, next);
     expect(mockRes.status).toBeCalledWith(404);
   });
+
+  it("Shows 404 default error message", (): void => {
     const expectedRes = {
-      message: "Internal Server Error",
+      Message: "Resource Not Found",
+      Error: "Not Found",
+      Status: 404,
     };
-    mockErr = { statusCode: undefined, message: "Internal Server Error" };
-    handleError(mockErr as ICustomError, mockReq as Request, mockRes as Response);
-    expect(mockRes.status).toBeCalledWith(500);
+    handleNotFoundResource(mockReq as Request, mockRes as Response, next);
     expect(mockRes.json).toBeCalledWith(expectedRes);
   });
 });
