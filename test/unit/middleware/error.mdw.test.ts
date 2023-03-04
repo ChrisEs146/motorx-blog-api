@@ -6,13 +6,14 @@ describe("Error handler", (): void => {
   let mockErr: Partial<ICustomError>;
   let mockReq: Partial<Request>;
   let mockRes: Partial<Response>;
+  let next: NextFunction;
 
   beforeEach((): void => {
     mockErr = {};
     mockReq = {};
     mockRes = {
       json: jest.fn(),
-      status: jest.fn(),
+    next = jest.fn();
     };
   });
 
