@@ -1,5 +1,5 @@
-import { handleError } from "src/middleware/error.middleware.js";
-import { Request, Response } from "express";
+import { handleError, handleNotFoundResource } from "src/middleware/error.middleware.js";
+import { NextFunction, Request, Response } from "express";
 import { ICustomError } from "src/middleware/middleware.interfaces.js";
 
 describe("Error handler", (): void => {
