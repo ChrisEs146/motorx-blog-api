@@ -10,10 +10,12 @@ import { ICustomError } from "./middleware.interfaces.js";
 /* eslint-disable */
 export function handleError(err: ICustomError, _req: Request, res: Response, _next: NextFunction) {
   const status = err.statusCode ?? 500;
-  res.status(status);
-  return res.json({
-    message: err.message,
-    stack: process.env.NODE_ENV === "production" ? null : err.stack,
+  const defaultMsg = "Internal Server Error";
+  return res.status(status).json({
+    Message: err.message || defaultMsg,
+    Error: err.error,
+    Status: status,
+    Stack: process.env.NODE_ENV === "production" ? null : err.stack,
   });
 }
 
