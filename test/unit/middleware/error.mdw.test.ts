@@ -13,6 +13,8 @@ describe("Error handler", (): void => {
     mockReq = {};
     mockRes = {
       json: jest.fn(),
+      status: jest.fn().mockReturnThis(),
+    };
     next = jest.fn();
     };
   });
