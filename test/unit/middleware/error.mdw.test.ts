@@ -47,7 +47,19 @@ describe("Error handler", (): void => {
     expect(mockRes.json).toBeCalledWith(expectedRes);
   });
 });
+
+describe("Handle not found resource", (): void => {
+  let mockReq: Partial<Request>;
+  let mockRes: Partial<Response>;
+  let next: NextFunction;
+
+  beforeEach((): void => {
+    mockReq = {};
+    mockRes = {
+      json: jest.fn(),
+      status: jest.fn().mockReturnThis(),
     };
+    next = jest.fn();
   });
 
   it("Shows internal server error 500 when status isn't defined", (): void => {
