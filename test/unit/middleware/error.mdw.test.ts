@@ -23,6 +23,17 @@ describe("Error handler", (): void => {
     handleError(mockErr as ICustomError, mockReq as Request, mockRes as Response, next);
     expect(mockRes.status).toBeCalledWith(500);
   });
+
+  it("Shows 500 default JSON message", (): void => {
+    const expectedRes = {
+      Message: "Internal Server Error",
+      Error: undefined,
+      Status: 500,
+      Stack: null,
+    };
+    handleError(mockErr as ICustomError, mockReq as Request, mockRes as Response, next);
+    expect(mockRes.json).toBeCalledWith(expectedRes);
+  });
     };
   });
 
