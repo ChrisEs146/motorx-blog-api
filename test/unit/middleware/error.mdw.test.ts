@@ -62,7 +62,10 @@ describe("Handle not found resource", (): void => {
     next = jest.fn();
   });
 
-  it("Shows internal server error 500 when status isn't defined", (): void => {
+  it("Returns 404 status code", (): void => {
+    handleNotFoundResource(mockReq as Request, mockRes as Response, next);
+    expect(mockRes.status).toBeCalledWith(404);
+  });
     const expectedRes = {
       message: "Internal Server Error",
     };
