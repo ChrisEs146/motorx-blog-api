@@ -28,5 +28,9 @@ export function handleError(err: ICustomError, _req: Request, res: Response, _ne
  */
 /* eslint-disable */
 export function handleNotFoundResource(_req: Request, res: Response, _next: NextFunction) {
+  return res.status(404).json({
+    Message: "Resource Not Found",
+    Error: "Not Found",
+    Status: 404,
   });
 }
