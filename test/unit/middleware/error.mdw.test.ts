@@ -16,6 +16,13 @@ describe("Error handler", (): void => {
       status: jest.fn().mockReturnThis(),
     };
     next = jest.fn();
+  });
+
+  it("Returns 500 status code when status isn't defined", (): void => {
+    mockErr = { statusCode: undefined, message: "Internal Server Error" };
+    handleError(mockErr as ICustomError, mockReq as Request, mockRes as Response, next);
+    expect(mockRes.status).toBeCalledWith(500);
+  });
     };
   });
 
