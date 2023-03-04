@@ -34,6 +34,19 @@ describe("Error handler", (): void => {
     handleError(mockErr as ICustomError, mockReq as Request, mockRes as Response, next);
     expect(mockRes.json).toBeCalledWith(expectedRes);
   });
+
+  it("Shows JSON message with custom error", () => {
+    const expectedRes = {
+      Message: "User does not exist",
+      Error: "Not Found",
+      Status: 404,
+      Stack: null,
+    };
+    mockErr = { message: "User does not exist", statusCode: 404, error: "Not Found" };
+    handleError(mockErr as ICustomError, mockReq as Request, mockRes as Response, next);
+    expect(mockRes.json).toBeCalledWith(expectedRes);
+  });
+});
     };
   });
 
