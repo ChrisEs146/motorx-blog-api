@@ -7,7 +7,7 @@ import { ICustomError } from "./middleware.interfaces.js";
  * @param _req Request
  * @param res Response
  */
-export function handleError(err: ICustomError, _req: Request, res: Response) {
+/* eslint-disable */
   const status = err.statusCode ?? 500;
   res.status(status);
   return res.json({
@@ -22,10 +22,6 @@ export function handleError(err: ICustomError, _req: Request, res: Response) {
  * @param _req Request
  * @param res Response
  */
-export function handleNotFoundError(err: ICustomError, _req: Request, res: Response) {
-  res.status(400);
-  return res.json({
-    message: err.message,
-    stack: process.env.NODE_ENV === "production" ? null : err.stack,
+/* eslint-disable */
   });
 }
