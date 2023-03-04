@@ -10,7 +10,7 @@
     "build": "tsc -p ./tsconfig.json",
     "lint": "eslint . --ext .ts",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
-    "test:unit": "jest --testPathPattern=./test/unit --runInBand",
+    "test:unit": "env-cmd -f ./.env.test jest --testPathPattern=./test/unit --runInBand",
     "test:integration": "test --testPathPattern=./test/integration --runInBand"
   },
   "keywords": [],
