@@ -18,7 +18,8 @@ export function handleError(err: ICustomError, _req: Request, res: Response, _ne
 }
 
 /**
- * Global error handler for 404 errors
+ * Global error handler for 404 errors.
+ * Handles the default case of an inexistent route
  * @param err Error object
  * @param _req Request
  * @param res Response
