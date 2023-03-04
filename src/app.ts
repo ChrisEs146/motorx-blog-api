@@ -2,7 +2,7 @@ import express, { Application } from "express";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { handleError, handleNotFoundError } from "./middleware/error.middleware.js";
+import { handleError, handleNotFoundResource } from "./middleware/error.middleware.js";
 import authRoutes from "./routes/auth.routes.js";
 
 const app: Application = express();
@@ -17,6 +17,6 @@ app.use(cors()); //TODO:Declare corsOptions
 app.use("/api/user", authRoutes);
 // Global error handler
 app.use(handleError);
-app.use(handleNotFoundError);
+app.use(handleNotFoundResource);
 
 export default app;
