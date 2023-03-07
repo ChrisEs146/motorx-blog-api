@@ -43,3 +43,10 @@ describe("Compare password", () => {
     const result = await comparePassword("testPassword", testPwd);
     expect(result).toBe(true);
   });
+
+  it("Must be false", async () => {
+    const testPwd = await hashPassword(10, "testPassword");
+    const result = await comparePassword("incorrectPwd", testPwd);
+    expect(result).toBe(false);
+  });
+});
