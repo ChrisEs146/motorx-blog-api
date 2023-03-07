@@ -14,3 +14,8 @@ describe("Hash password", () => {
     expect(pwd.length).toBe(60);
   });
 
+  it("Hashed password to be string", async () => {
+    const pwd = await hashPassword(10, "testPassword");
+    expect(typeof pwd).toBe("string");
+  });
+});
