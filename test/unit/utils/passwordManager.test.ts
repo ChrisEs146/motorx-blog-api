@@ -8,3 +8,9 @@ describe("Hash password", () => {
     const pwd = await hashPassword(10, "testPassword");
     expect(pwd).toBeDefined();
   });
+
+  it("Hashed password to be 60 chars long", async () => {
+    const pwd = await hashPassword(10, "testPassword");
+    expect(pwd.length).toBe(60);
+  });
+
