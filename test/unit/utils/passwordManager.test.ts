@@ -1,20 +1,22 @@
+import { comparePassword, hashPassword } from "src/utils/passwordManager.js";
+
 describe("Hash password", () => {
   it("Throws error if parameters are not provided", async () => {
     const testFunc = async () => await hashPassword(0, "");
     await expect(testFunc).rejects.toThrow();
   });
 
-  it("Hashed password to be defined", async () => {
+  it("Must be defined", async () => {
     const pwd = await hashPassword(10, "testPassword");
     expect(pwd).toBeDefined();
   });
 
-  it("Hashed password to be 60 chars long", async () => {
+  it("Must be 60 chars long", async () => {
     const pwd = await hashPassword(10, "testPassword");
     expect(pwd.length).toBe(60);
   });
 
-  it("Hashed password to be string", async () => {
+  it("Must be string", async () => {
     const pwd = await hashPassword(10, "testPassword");
     expect(typeof pwd).toBe("string");
   });
