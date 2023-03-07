@@ -19,3 +19,9 @@ describe("Hash password", () => {
     expect(typeof pwd).toBe("string");
   });
 });
+
+describe("Compare password", () => {
+  it("Throws error if params are not provided", async () => {
+    const testFunc = async () => await comparePassword("", "");
+    await expect(testFunc).rejects.toThrow();
+  });
