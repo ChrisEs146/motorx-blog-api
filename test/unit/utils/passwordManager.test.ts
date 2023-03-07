@@ -25,3 +25,9 @@ describe("Compare password", () => {
     const testFunc = async () => await comparePassword("", "");
     await expect(testFunc).rejects.toThrow();
   });
+
+  it("Must be defined", async () => {
+    const testPwd = await hashPassword(10, "testPassword");
+    const result = await comparePassword("testPwd", testPwd);
+    expect(result).toBeDefined();
+  });
