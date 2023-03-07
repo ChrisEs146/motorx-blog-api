@@ -37,3 +37,9 @@ describe("Compare password", () => {
     const result = await comparePassword("testPwd", testPwd);
     expect(typeof result).toBe("boolean");
   });
+
+  it("Must be true", async () => {
+    const testPwd = await hashPassword(10, "testPassword");
+    const result = await comparePassword("testPassword", testPwd);
+    expect(result).toBe(true);
+  });
