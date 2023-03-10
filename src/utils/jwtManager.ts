@@ -31,3 +31,29 @@ export function signToken(claims: IClaims, options?: TokenOptions): string {
     expiresIn: options?.duration ?? processVar.REFRESH_TOKEN_EXPIRY,
   });
 }
+
+/**
+ * Async - verifies and decodes a JWT token
+ * @param token JWT token to be validated and decoded
+ * @param secret JWT Secret
+ * @returns Decoded token
+ */
+export function verifyAndDecode(token: string, secret: string): Promise<IClaims> {
+  if (!token && !secret) {
+    throw new Error("Must provide a token and a secret");
+  }
+
+  return new Promise((resolve, reject): void => {
+    jwt.verify(
+      token,
+      Buffer.from(secret, "base64"),
+      { algorithms: ["HS512"], complete: false },
+      (error, decoded): void => {
+        if (error) {
+          return reject(error);
+        }
+        resolve(decoded as IClaims);
+      }
+    );
+  });
+}
