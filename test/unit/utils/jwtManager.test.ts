@@ -54,3 +54,12 @@ describe("Verify and decode token", () => {
     const testFunc = async () => await verifyAndDecode(token, secret);
     await expect(testFunc).rejects.toThrow();
   });
+
+  it("Must throw an error if token is expired", async () => {
+    const token = signToken({ id: "36dthrgy" }, { duration: "1s" });
+    const testFunc = async () => {
+      await setTimeout(2000);
+      return await verifyAndDecode(token, processVar.ACCESS_TOKEN_KEY);
+    };
+    await expect(testFunc).rejects.toThrow();
+  });
