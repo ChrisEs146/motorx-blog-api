@@ -14,3 +14,9 @@ describe("sign token", () => {
     const accessToken = signToken(claims);
     expect(accessToken).toBeDefined();
   });
+
+  it("Must sign and return a refresh token", () => {
+    const claims = { id: "263gdtrXDcbRdutch" };
+    const refreshToken = signToken(claims, { isRefresh: true });
+    expect(refreshToken).toBeDefined();
+  });
