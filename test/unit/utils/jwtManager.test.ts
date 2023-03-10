@@ -39,3 +39,11 @@ describe("sign token", () => {
     expect(accessToken).toBeDefined();
   });
 });
+
+describe("Verify and decode token", () => {
+  it("Must throw error if token and secret are invalid", async () => {
+    const token = "";
+    const secret = "";
+    const testFunc = async () => await verifyAndDecode(token, secret);
+    await expect(testFunc).rejects.toThrow("Must provide a token and a secret");
+  });
