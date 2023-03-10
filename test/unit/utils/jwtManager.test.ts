@@ -63,3 +63,9 @@ describe("Verify and decode token", () => {
     };
     await expect(testFunc).rejects.toThrow();
   });
+
+  it("Must return a defined decoded value", async () => {
+    const token = signToken({ id: "isd12746gHy" });
+    const decoded = await verifyAndDecode(token, processVar.ACCESS_TOKEN_KEY);
+    expect(decoded.id).toBeDefined();
+  });
