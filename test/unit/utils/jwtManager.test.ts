@@ -47,3 +47,10 @@ describe("Verify and decode token", () => {
     const testFunc = async () => await verifyAndDecode(token, secret);
     await expect(testFunc).rejects.toThrow("Must provide a token and a secret");
   });
+
+  it("Must throw error if secret is invalid", async () => {
+    const token = signToken({ id: "365tdgry" });
+    const secret = "";
+    const testFunc = async () => await verifyAndDecode(token, secret);
+    await expect(testFunc).rejects.toThrow();
+  });
