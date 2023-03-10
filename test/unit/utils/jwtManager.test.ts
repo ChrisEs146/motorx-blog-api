@@ -26,3 +26,9 @@ describe("sign token", () => {
     const accessToken = signToken(claims);
     expect(typeof accessToken).toBe("string");
   });
+
+  it("Must return a valid token even if there are extra claims", () => {
+    const claims = { id: "263gdtrX", iss: "test.example.com" };
+    const accessToken = signToken(claims);
+    expect(accessToken).toBeDefined();
+  });
