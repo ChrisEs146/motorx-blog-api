@@ -32,3 +32,10 @@ describe("sign token", () => {
     const accessToken = signToken(claims);
     expect(accessToken).toBeDefined();
   });
+
+  it("Must return a valid token if duration is provided in options", () => {
+    const claims = { id: "263gdtrX" };
+    const accessToken = signToken(claims, { duration: "1s" });
+    expect(accessToken).toBeDefined();
+  });
+});
