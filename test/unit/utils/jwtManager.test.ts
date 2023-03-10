@@ -8,3 +8,9 @@ describe("sign token", () => {
     const testFunc = () => signToken(claims);
     expect(testFunc).toThrow();
   });
+
+  it("Must sign and return an access token", () => {
+    const claims = { id: "263gdtrX" };
+    const accessToken = signToken(claims);
+    expect(accessToken).toBeDefined();
+  });
