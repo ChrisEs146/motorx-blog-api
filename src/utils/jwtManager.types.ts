@@ -6,4 +6,5 @@ export interface IClaims extends JwtPayload {
 
 export type TokenOptions = {
   isRefresh?: boolean;
+  duration?: string | number;
 };
