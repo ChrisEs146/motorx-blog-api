@@ -75,3 +75,10 @@ describe("Verify and decode token", () => {
     const decoded = await verifyAndDecode(token, processVar.ACCESS_TOKEN_KEY);
     expect(typeof decoded.id).toBe("string");
   });
+
+  it("Must return other claims if provided", async () => {
+    const token = signToken({ id: "isd12746gHy", iss: "test.example.com" });
+    const decoded = await verifyAndDecode(token, processVar.ACCESS_TOKEN_KEY);
+    expect(decoded.iss).toBe("test.example.com");
+  });
+});
