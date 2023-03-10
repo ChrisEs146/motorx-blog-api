@@ -20,3 +20,9 @@ describe("sign token", () => {
     const refreshToken = signToken(claims, { isRefresh: true });
     expect(refreshToken).toBeDefined();
   });
+
+  it("Token must be of type string", () => {
+    const claims = { id: "263gdtrX" };
+    const accessToken = signToken(claims);
+    expect(typeof accessToken).toBe("string");
+  });
