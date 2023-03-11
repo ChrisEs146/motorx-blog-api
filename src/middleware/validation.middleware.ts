@@ -7,7 +7,10 @@ function validateResource(customSchema: AnyZodObject) {
       customSchema.parse({ ...req.body, ...req.params });
       next();
     } catch (error: unknown) {
-      res.status(400).json(error);
+      const formattedError = error as ZodError;
+      res.status(400).json({
+        message: formattedError.issues.at(0)?.message,
+      });
     }
   };
 }
