@@ -70,3 +70,13 @@ describe("Validation middleware", () => {
     testFunc(mockReq as Request, mockRes as Response, next);
     expect(next).toBeCalledTimes(1);
   });
+
+  it("Calls next func on valid reset email input", () => {
+    const validBody = {
+      email: "arthur@email.com",
+    };
+    mockReq = { body: validBody };
+    const testFunc = validateResource(resetEmailSchema);
+    testFunc(mockReq as Request, mockRes as Response, next);
+    expect(next).toBeCalledTimes(1);
+  });
