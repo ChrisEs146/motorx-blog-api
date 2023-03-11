@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { AnyZodObject } from "zod";
+import { AnyZodObject, ZodError } from "zod";
 
 function validateResource(customSchema: AnyZodObject) {
   return (req: Request, res: Response, next: NextFunction): void => {
