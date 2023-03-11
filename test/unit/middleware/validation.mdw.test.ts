@@ -22,3 +22,17 @@ describe("Validation middleware", () => {
     };
     next = jest.fn();
   });
+
+  it("Calls next func on valid user creation input", () => {
+    const validBody = {
+      firstName: "Arthur",
+      lastName: "Morgan",
+      email: "arthur@email.com",
+      password: "testPassword",
+      confirmPassword: "testPassword",
+    };
+    mockReq = { body: validBody };
+    const testFunc = validateResource(createUserSchema);
+    testFunc(mockReq as Request, mockRes as Response, next);
+    expect(next).toBeCalledTimes(1);
+  });
