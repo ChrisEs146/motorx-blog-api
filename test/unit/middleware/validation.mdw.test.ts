@@ -92,3 +92,66 @@ describe("Validation middleware", () => {
     expect(next).toBeCalledTimes(1);
   });
 });
+
+describe("validate update password schema", () => {
+  let mockReq: Partial<Request>;
+  let mockRes: Partial<Response>;
+  let next: NextFunction;
+
+  beforeEach(() => {
+    mockReq = {};
+    mockRes = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    };
+    next = jest.fn();
+  });
+
+  it("Must throw error pwd is required", () => {
+    const invalidBody = {
+      currentPassword: undefined,
+      newPassword: "updatedPassword",
+      confirmPassword: "updatedPassword",
+    };
+    mockReq = { body: invalidBody };
+    const expectedRes = {
+      message: "Password is required",
+    };
+    const testFunc = validateResource(updatePasswordSchema);
+    testFunc(mockReq as Request, mockRes as Response, next);
+    expect(mockRes.json).toBeCalledWith(expectedRes);
+    expect(mockRes.status).toBeCalledWith(400);
+  });
+
+  it("Must throw error pwd must be a string", () => {
+    const invalidBody = {
+      currentPassword: "testPassword",
+      newPassword: 12,
+      confirmPassword: "updatedPassword",
+    };
+    mockReq = { body: invalidBody };
+    const expectedRes = {
+      message: "Password must be a string",
+    };
+    const testFunc = validateResource(updatePasswordSchema);
+    testFunc(mockReq as Request, mockRes as Response, next);
+    expect(mockRes.json).toBeCalledWith(expectedRes);
+    expect(mockRes.status).toBeCalledWith(400);
+  });
+
+  it("Must throw error pwd must be at least 8 chars long", () => {
+    const invalidBody = {
+      currentPassword: "testPassword",
+      newPassword: "updatedPassword",
+      confirmPassword: "upd",
+    };
+    mockReq = { body: invalidBody };
+    const expectedRes = {
+      message: "Confirm password must be at least 8 chars long",
+    };
+    const testFunc = validateResource(updatePasswordSchema);
+    testFunc(mockReq as Request, mockRes as Response, next);
+    expect(mockRes.json).toBeCalledWith(expectedRes);
+    expect(mockRes.status).toBeCalledWith(400);
+  });
+});
