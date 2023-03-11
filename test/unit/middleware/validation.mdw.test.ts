@@ -80,3 +80,15 @@ describe("Validation middleware", () => {
     testFunc(mockReq as Request, mockRes as Response, next);
     expect(next).toBeCalledTimes(1);
   });
+
+  it("Calls next func on valid forgot password input", () => {
+    const validBody = {
+      password: "testPassword",
+      confirmPassword: "testPassword",
+    };
+    mockReq = { body: validBody };
+    const testFunc = validateResource(forgotPasswordSchema);
+    testFunc(mockReq as Request, mockRes as Response, next);
+    expect(next).toBeCalledTimes(1);
+  });
+});
