@@ -59,3 +59,14 @@ describe("Validation middleware", () => {
     testFunc(mockReq as Request, mockRes as Response, next);
     expect(next).toBeCalledTimes(1);
   });
+
+  it("Calls next func on valid login input", () => {
+    const validBody = {
+      email: "arthur@email.com",
+      password: "testPassword",
+    };
+    mockReq = { body: validBody };
+    const testFunc = validateResource(logInUserSchema);
+    testFunc(mockReq as Request, mockRes as Response, next);
+    expect(next).toBeCalledTimes(1);
+  });
